@@ -11,7 +11,9 @@ class UnionFindCanonical():
         x = component_a
 
         while x != self.connected_components_id[x]:
-            self.connected_components_id[x] = self.connected_components_id[self.connected_components_id[x]]
+            self.connected_components_id[x] = self.connected_components_id[
+                self.connected_components_id[x]
+            ]
             x = self.connected_components_id[x]
 
         return x
@@ -20,10 +22,9 @@ class UnionFindCanonical():
         return self.root(component_a) == self.root(component_b)
 
     def find(self, component):
-        return self.large[component]
+        return self.large[self.root(component)]
 
     def union(self, component_a, component_b):
-
         root_a = self.root(component_a)
         root_b = self.root(component_b)
 
@@ -38,7 +39,7 @@ class UnionFindCanonical():
             self.connected_components_id[root_b] = self.connected_components_id[root_a]
             self.trees_sizes[root_a] += self.trees_sizes[root_b]
 
-        # Porque isso acontece?
+        # Porque isso acontece? 
         if large_a > large_b:
             self.large[root_b] = large_a
         else:
