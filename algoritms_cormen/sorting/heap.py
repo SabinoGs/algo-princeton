@@ -8,17 +8,14 @@ def right_node(indice):
 
 def max_heapify(array, indice):
 
-    heap_size = int(log2(len(array)))
+    # O heap_size é algo que deve ser definido por nós
+    heap_size = len(array)
     left = left_node(indice)
     right = right_node(indice)
+    largest = indice
 
-
-    print(heap_size, left, right)
-    print("Array antes: ", array)
     if left <= heap_size and array[left] > array[indice]:
         largest = left
-    else:
-        largest = indice
 
     if right <= heap_size and array[right] > array[largest]:
         largest = right
@@ -29,11 +26,14 @@ def max_heapify(array, indice):
         array[largest] = tmp
         max_heapify(array, largest)
 
-    print("Array Depois: ", array)
 
 
 if __name__ == "__main__":
+
+    # 27 17 3 16 13 10 1 5 7 12 4 8 9 0
     
     array = list(map(int, input("Insira o array: ").split()))
     indice = int(input("Indique o indice para realizar o max-heapify: "))
     max_heapify(array, indice) 
+
+    print(array)
