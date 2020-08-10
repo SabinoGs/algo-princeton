@@ -21,6 +21,8 @@ class HeapSort():
 
     def max_heapify(self, indice):
 
+
+
         while indice < self.heap_size: # Remove a necessidade de recursão
             
             left = self.left_node(indice)
